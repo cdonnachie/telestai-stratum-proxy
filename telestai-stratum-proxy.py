@@ -182,7 +182,7 @@ class StratumSession(RPCSession):
         # The first address that connects is the one that is used
         address = username.split('.')[0]
         addr_decoded = base58.b58decode_check(address)
-        if addr_decoded[0] != (109 if self._testnet else 50):
+        if addr_decoded[0] != (111 if self._testnet else 66):
             raise RPCError(20, f'Invalid address {address}')
         if not self._state.pub_h160:
             self._state.pub_h160 = addr_decoded[1:]
@@ -329,7 +329,7 @@ async def stateUpdater(state: TemplateState, old_states, drop_after, verbose, no
                 witness_hex: str = json_obj['result']['default_witness_commitment']
                 target_hex: str = json_obj['result']['target']
                 dev_address: str = "TesBmcgLQsowvYEYPXpSHkkapoTbVV7Xfe"
-                dev_sats_int: int = coinbase_sats_int * 0.25
+                dev_sats_int: int = int(coinbase_sats_int * 0.25)
 
                 ts = int(time.time())
                 new_witness = witness_hex != state.current_commitment
