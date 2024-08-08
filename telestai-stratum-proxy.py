@@ -329,7 +329,7 @@ async def stateUpdater(state: TemplateState, old_states, drop_after, verbose, no
                 witness_hex: str = json_obj['result']['default_witness_commitment']
                 target_hex: str = json_obj['result']['target']
                 dev_address: str = "TesBmcgLQsowvYEYPXpSHkkapoTbVV7Xfe"
-                dev_sats_int: int = int(coinbase_sats_int * 0.25)
+                dev_sats_int: int = 11700000000
 
                 ts = int(time.time())
                 new_witness = witness_hex != state.current_commitment
